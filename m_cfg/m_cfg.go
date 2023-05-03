@@ -15,20 +15,7 @@ type Setting struct {
 
 // Важно!! Не забыть изменить поле json:"" иначе имя будет сохранятся старое
 type json_cfg struct {
-	Path_folder_logs      string   `json:"path_folder_logs"`      // путь к папке с логами
-	Path_folder_result    string   `json:"path_folder_result"`    // путь к результатам поиска по почтам
-	Save_full_logs        bool     `json:"save_full_logs"`        // сохранение полного лога
-	Google_mail           []string `json:"google_mail"`           // запросы по ключевым словам gmail
-	Outlook_mail          []string `json:"outlook_mail"`          // запросы по ключевым словам outlook mail
-	Yahoo_mail            []string `json:"yahoo_mail"`            // запросы по ключевым словам yahoo mail
-	Epicgames             bool     `json:"epicgames"`             // чекает эпик куки на вход
-	Youtube               bool     `json:"youtube"`               // чекер youtube
-	Youtube_min_subscribe int      `json:"youtube_min_subscribe"` // минимальное число подписчиков для сохранения канала в отдельную папку с инфо
-	Proxy                 string   `json:"proxy"`                 // прокси в виде строки "127.0.0.1:8888"
-	Max_tcp_connections   int      `json:"max_tcp_connections"`   // максимальное количество tcp подключенний
-	MaxProc               int      `json:"maxProc"`               // максимум активных процессоров
-	Max_threads           int      `json:"max_threads"`           // количество одновременно чекающих логов(папки cookies)
-	Logger_on             bool     `json:"logger_on"`             //включение логгера приложения
+	User string `json:"user"`
 }
 
 // Метод сохраняет изменения в конфиге
