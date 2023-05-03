@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
-	a, _ := m_file.File_open("go.mod")
-	fmt.Println(string(a))
+	err := m_file.Zip_Extract("putty-0.73-ru-17.zip", "")
+	if err != nil {
+		fmt.Println(err)
+	}
 }
