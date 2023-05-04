@@ -53,10 +53,14 @@ func Zip_Extract(path_zip string, path_dir_extract string) error {
 			}
 		} else {
 
+			if err := os.MkdirAll(filepath.Dir(path_dir), f.Mode()); err != nil {
+				return fmt.Errorf("Ошибка при создании папки:%v Err:%v", path_dir, err)
+			}
+
 			// Создаем новый файл
 			dst, err := os.Create(path_file)
 			if err != nil {
-				fmt.Printf("Ошибка при создании нового файла:%v\n", err)
+				fmt.Printf("Zip_Extract: Ошибка при создании нового файла:%v\n", err)
 				continue
 			}
 			defer dst.Close()
