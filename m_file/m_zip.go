@@ -47,12 +47,12 @@ func Zip_Extract(path_zip string, path_dir_extract string) error {
 
 		// Создаем директории для файла, иначе записываем файл
 		if f.FileInfo().IsDir() {
-			if err := os.MkdirAll(path_dir, f.Mode()); err != nil {
+			if err := os.MkdirAll(path_dir, 0755); err != nil {
 				return fmt.Errorf("Ошибка при создании папки:%v Err:%v", path_dir, err)
 			}
 		} else {
 
-			if err := os.MkdirAll(filepath.Dir(path_dir), f.Mode()); err != nil {
+			if err := os.MkdirAll(filepath.Dir(path_dir), 0755); err != nil {
 				return fmt.Errorf("Ошибка при создании папки:%v Err:%v", path_dir, err)
 			}
 
