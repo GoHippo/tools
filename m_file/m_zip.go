@@ -3,6 +3,7 @@ package m_file
 import (
 	"archive/zip"
 	"fmt"
+	"github.com/GoHippo/tools/m_path"
 	"io"
 	"os"
 	"path"
@@ -17,16 +18,14 @@ func Zip_Extract(path_zip string, path_dir_extract string) error {
 	if path_dir_extract == "" {
 		path_dir_extract = path.Join(path.Dir(path_zip), path.Base(path_zip)[:len(path.Base(path_zip))-4])
 	}
-
-	if path_dir_extract[:1] == "/" {
-		path_dir_extract = "." + path_dir_extract
-	}
+	path_dir_extract = m_path.ToLinux(path_dir_extract)
+	path_zip = m_path.ToLinux(path_zip)
 
 	// Открываем zip архив
 	z, err := zip.OpenReader(path_zip)
 
 	if err != nil {
-		return fmt.Errorf("Ошибка при открытии архива:%v", err)
+		return fmt.Errorf("Ошибка при открытии архива(%v):%v", path_zip, err)
 	}
 	defer z.Close()
 

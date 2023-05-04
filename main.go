@@ -7,7 +7,7 @@ import (
 
 // only test func
 func main() {
-	err := m_file.Zip_Extract("putty-0.73-ru-17.zip", "")
+	err := m_file.Zip_Extract("/test.zip", "")
 	if err != nil {
 		fmt.Println(err)
 	}
