@@ -61,7 +61,7 @@ func (l *Logs) save_log() {
 	mutex.Unlock()
 
 	if l.save_file {
-		file, err := os.OpenFile(l.path_save, os.O_APPEND, 0777)
+		file, err := os.OpenFile(l.path_save, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0777)
 		if err != nil {
 			log.Fatal("[Err]Файл лога не открывается для записи! err: ", err)
 		}
